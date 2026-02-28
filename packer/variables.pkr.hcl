@@ -6,8 +6,8 @@ variable "aws_region" {
 
 variable "instance_type" {
   type        = string
-  default     = "t3.micro"
-  description = "EC2 instance type used during the build. t3.micro keeps costs minimal."
+  default     = "t2.micro"
+  description = "EC2 instance type used during the build. t2.micro keeps costs minimal."
 }
 
 variable "ami_name_prefix" {
