@@ -12,7 +12,7 @@ variable "instance_type" {
 
 variable "ami_name_prefix" {
   type        = string
-  default     = "golden-image"
+  default     = "ec2-golden-image"
   description = "Prefix for the resulting AMI name. Combined with OS and timestamp."
 }
 
