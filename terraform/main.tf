@@ -1,3 +1,10 @@
+locals {
+  tags = {
+    Project   = "packer-aws-golden-image"
+    ManagedBy = "Terraform"
+  }
+}
+
 # Rol IAM asumido por la instancia EC2 durante el build de Packer
 resource "aws_iam_role" "packer_instance" {
   name = "packer-instance-role"
@@ -10,6 +17,8 @@ resource "aws_iam_role" "packer_instance" {
       Action    = "sts:AssumeRole"
     }]
   })
+
+  tags = local.tags
 }
 
 # Política inline: acceso a SSM para conectividad sin puerto 22
@@ -23,10 +32,14 @@ resource "aws_iam_role_policy" "packer_instance" {
 resource "aws_iam_instance_profile" "packer" {
   name = "packer-instance-profile"
   role = aws_iam_role.packer_instance.name
+
+  tags = local.tags
 }
 
 # Managed policy para el usuario/rol que ejecuta Packer localmente
 resource "aws_iam_policy" "packer_build" {
   name   = "packer-build-policy"
   policy = file("${path.module}/../iam/packer-build-policy.json")
+
+  tags = local.tags
 }
