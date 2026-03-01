@@ -1,0 +1,16 @@
+# Packer
+packer/.packer.d/
+packer/manifest.json
+
+# Terraform
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+
+# Credenciales y variables locales
+*.auto.pkrvars.hcl
+*.tfvars
+
+# macOS
+.DS_Store

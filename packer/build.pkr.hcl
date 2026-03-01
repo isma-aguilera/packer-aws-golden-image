@@ -22,7 +22,7 @@ build {
     inline = [
       "echo '==> [04] Lynis security audit'",
       "lynis audit system --quick --no-colors 2>&1 | tee /tmp/lynis-report.txt",
-      "SCORE=$(grep 'Hardening index' /tmp/lynis-report.txt | awk -F'[][]' '{print $2}')",
+      "SCORE=$(grep 'Hardening index' /tmp/lynis-report.txt | awk '{print $4}')",
       "echo \"Lynis hardening score: $SCORE\"",
       "[ \"$SCORE\" -ge 70 ] || (echo 'ERROR: Lynis score below minimum threshold of 70' && exit 1)",
       "echo '==> [04] Done: Lynis audit passed'"

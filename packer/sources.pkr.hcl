@@ -46,7 +46,7 @@ source "amazon-ebs" "al2023" {
   subnet_id = var.subnet_id != "" ? var.subnet_id : null
 
   ami_name        = local.ami_name
-  ami_description = "Golden Image — Amazon Linux 2023 — CIS Level 1 Hardened — ${local.timestamp}"
+  ami_description = "Golden Image - Amazon Linux 2023 - CIS Level 1 Hardened - ${local.timestamp}"
 
   tags     = local.common_tags
   run_tags = local.common_tags

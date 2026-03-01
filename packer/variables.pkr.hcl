@@ -24,13 +24,8 @@ variable "org_name" {
 
 variable "environment" {
   type        = string
-  default     = "base"
-  description = "Target environment tag (base, staging, production)."
-
-  validation {
-    condition     = contains(["base", "staging", "production"], var.environment)
-    error_message = "environment must be one of: base, staging, production."
-  }
+  default     = "develop"
+  description = "Target environment tag"
 }
 
 variable "encrypt_boot" {
